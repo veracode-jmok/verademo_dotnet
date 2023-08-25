@@ -12,7 +12,7 @@ Setup API ID and Key in Pipeline Variables –
 Once build completes you can download results.json from build summary screen or view them in the console output for the Pipeline scanner step.  
 
 Check the results.json into source code and reference it in the command to break build on new findings. 
-
+d
 To break on new flaws found from previous scan, add "- bf results.json" to string and remove "|| true" at the end of the string so the step will break the build process on new flaws.
 
 Find further options here:https://help.veracode.com/r/r_pipeline_scan_commands
