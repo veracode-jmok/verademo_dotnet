@@ -1,5 +1,5 @@
 name: Veracode Build Java Maven Application
-
+  
 on:
   workflow_call:
     inputs:
@@ -12,6 +12,8 @@ on:
       token:
         required: true
         type: string
+      push: 
+        
 jobs:
   build:
     runs-on: windows-2019
@@ -28,10 +30,7 @@ jobs:
         run: 'msbuild Verademo-dotnet.sln /t:clean'
       - name: Build - was dotnet build --no-restore
         run: >-
-          msbuild.exe Verademo-dotnet.sln /p:DeployOnBuild=true
-          /p:WebPublishMethod=Package /p:PackageAsSingleFile=true
-          /p:SkipInvalidConfigurations=true /p:PackageLocation=./..
-          /p:DebugSymbols=true /t:build
+          msbuild.exe Verademo-dotnet.sln /p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation=./.. /p:DebugSymbols=true /t:build
       - name: List files in the repository and copy artifact
         run: |
           dir ${{ github.workspace }}
